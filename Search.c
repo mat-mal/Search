@@ -1,21 +1,33 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 int CountFiles(DIR *directory);
 
 int main(void)
 {
+    char path[256];
+    
     DIR *directory = NULL;
     struct dirent *entry;
-    directory = opendir(".");
+    struct stat stbuf;
+    directory = opendir("./We");
 
     int counter = CountFiles(directory);
     char buffor[counter][256];
     int i = 0;
     while((entry = readdir(directory)) != NULL)
     {
-        strncpy(buffor[i], entry->d_name, 256);
-        printf("%s\n", buffor[i]);
+        sprintf(path, "./We/%s", entry->d_name);
+        stat(path, &stbuf);
+        if(S_ISDIR(stbuf.st_mode))
+        {
+            strncpy(buffor[i], entry->d_name, 256);
+            printf("Buffor: %s\n", buffor[i]);
+            printf("Entry:  %s\n", entry->d_name);
+        }
         i++;
     }
     
@@ -29,6 +41,10 @@ int main(void)
         if(strstr(buffor[i], search) != NULL)
         {
             printf("Result: %s\n", buffor[i]);
+        }
+        else if(i == counter-1)
+        {
+            printf("Sorry couldn't find anything\n");
         }
     }
 

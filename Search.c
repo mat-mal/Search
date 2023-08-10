@@ -3,7 +3,6 @@
 
 static int counter = 0;
 static int found = 0;
->>>>>>> Stashed changes
 
 int main(int argc, char *argv[])
 {
@@ -34,7 +33,6 @@ int main(int argc, char *argv[])
     string* results = calloc(1000, sizeof(string));
     Search(path, WhatToFind(), results);
     PrintResults(results);
->>>>>>> Stashed changes
 
     return 0;
 }
@@ -241,5 +239,4 @@ void PrintManPage(void)
 	printf("Options:\n");
 	printf("  -h                 Display this information\n");
 	printf("  -d <drive letter>  Choose drive to be searched\n");
->>>>>>> Stashed changes
 }

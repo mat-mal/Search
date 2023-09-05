@@ -93,9 +93,19 @@ char* WhatToFind(void)
 {
     while(1)
     {
+        bool specchar = false;
         printf("Search: ");
         fgets(search, 260, stdin);
         lenght = strlen(search);
+        for(int i = 0; i < lenght; i++)
+        {
+            if(search[i] == '/' || search[i] == '\\' || search[i] == '|' || search[i] == ':' || search[i] == '"' || search[i] == '*' || search[i] == '?' || search[i] == '<' || search[i] == '>')
+            {
+                printf("Don't use in your search this charakters: /, \\, :, |, <, >, *, ?, \".\n");
+                specchar = true;
+            }
+        }
+        if(specchar == true) continue;
         if(lenght < 3 && search[0] == 'q')
         {
             exit(0);

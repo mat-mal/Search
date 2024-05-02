@@ -1,4 +1,4 @@
-Simple program to search files in Winows 10 (mayby 11). 
+Simple program to search files in Winows OS. 
 
 WARNING!!!
 

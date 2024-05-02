@@ -5,7 +5,7 @@ Simple program to search files in Winows OS.
  
 In extream conditions may couse stack overflow.
 
-# Usage (only in terminal):
+# Usage:
 
 ```
 Search.exe [options] "name to search"
